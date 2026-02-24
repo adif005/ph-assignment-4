@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,148 +15,155 @@
     <div class="flex justify-between px-2 mt-5">
         <div class=" p-2.5 rounded-2xl bg-[#ffffff] w-[30%] shadow">
             <p class="text-[#323B49]">Total</p>
-            <span class="font-bold text-2xl">0</span>
+            <span id="total-count" class="font-bold text-2xl">0</span>
         </div>
         <div class=" p-2.5 rounded-2xl bg-[#ffffff] w-[30%] shadow">
             <p class="text-[#323B49]">Interview</p>
-            <span class="font-bold text-2xl">0</span>
+            <span id="interview-count" class="font-bold text-2xl">0</span>
         </div>
         <div class=" p-2.5 rounded-2xl bg-[#ffffff] w-[30%] shadow">
             <p class="text-[#323B49]">Rejected</p>
-            <span class="font-bold text-2xl">0</span>
+            <span id="reject-count" class="font-bold text-2xl">0</span>
         </div>
     </div>
     <hr class="font-bold text-[#E6E7E9]">
-</header>
+</header> 
 <main class="container mx-auto my-9 space-y-7">
-    <div class="space-y-7">
-        <h1 class="text-2xl font-semibold" >Available Jobs</h1>
+<div class="space-y-7 flex justify-between">
+     <div>
+        <h1 class="text-2xl font-semibold mb-6" >Available Jobs</h1>
         <div class="flex gap-7">
-            <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">All</button>
-            <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Interview</button>
-            <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Rejected</button>
+            <button onclick=" toggle('all-tab-btn')" id="all-tab-btn" class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-blue-600 ">All</button>
+            <button onclick=" toggle('interview-tab-btn')" id="interview-tab-btn" class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Interview</button>
+            <button onclick=" toggle('reject-tab-btn')" id="reject-tab-btn" class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Rejected</button>
         </div>
     </div>
+    <div>
+        <span  class="m-9 text-xl">0 Jobs</span>
+    </div>
+</div>
 
+<section id="blank" class="hidden">
 
+</section>
 <!-- blank section -->
- <div class="p-14 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl text-center">
+ <div id="blank-job" class="p-14 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl text-center hidden">
     <img src="images/jobs.png" alt="" class="mx-auto">
     <h2 class="text-3xl font-semibold">No jobs available</h2>
     <p class="text-[#323B49]">Check back soon for new job opportunities</p>
  </div>
 <!-- cards -->
-    <div class="space-y-5">
+    <div id="cards-container" class="space-y-5">
         <div class="p-10 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl flex justify-between">
             <div class="space-y-4">
-                <h1 class="text-2xl font-semibold">Mobile First Corp</h1>
-            <p class="text-[#323B49]">React Native Developer</p>
-            <p class="text-[#323B49]">Remote Full-time$130,000 - $175,000</p>
-            <p class="bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
-            <p class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                <h1 class="company text-2xl font-semibold">Mobile First Corp</h1>
+            <p class="post text-[#323B49]">React Native Developer</p>
+            <p class="salary text-[#323B49]">Remote Full-time$130,000 - $175,000</p>
+            <p class="status bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
+            <p class="discription text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
             <div class="">
-                <button class="border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
-                <button class="border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
+                <button class="interview-btn border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
+                <button class="reject-btn border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
             </div>
             </div>
              <div>
-                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Delete</button>
+                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 delete ">Delete</button>
             </div>
         </div>
         <div class="p-10 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl flex justify-between">
             <div class="space-y-4">
-                <h1 class="text-2xl font-semibold">WebFlow Agency</h1>
-            <p class="text-[#323B49]">Web Designer & Developer</p>
-            <p class="text-[#323B49]">Los Angeles, CAPart-time $80,000 - $120,000</p>
-            <p class="bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
-            <p class="text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends..</p>
+                <h1 class="company text-2xl font-semibold">WebFlow Agency</h1>
+            <p class="post text-[#323B49]">Web Designer & Developer</p>
+            <p class="salary text-[#323B49]">Los Angeles, CAPart-time $80,000 - $120,000</p>
+            <p class="status bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
+            <p class="discription text-[#323B49]">Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends..</p>
             <div class="">
-                <button class="border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
-                <button class="border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
+                <button class="interview-btn border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
+                <button class="reject-btn border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
             </div>
             </div>
              <div>
-                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Delete</button>
+                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 delete ">Delete</button>
             </div>
         </div>
         <div class="p-10 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl flex justify-between">
             <div class="space-y-4">
-                <h1 class="text-2xl font-semibold">DataViz Solutions</h1>
-            <p class="text-[#323B49]">Data Visualization Specialist</p>
-            <p class="text-[#323B49]">Boston, MA Full-time $125,000 - $165,000</p>
-            <p class="bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
-            <p class="text-[#323B49]">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.
+                <h1 class="company text-2xl font-semibold">DataViz Solutions</h1>
+            <p class="post text-[#323B49]">Data Visualization Specialist</p>
+            <p class="salary text-[#323B49]">Boston, MA Full-time $125,000 - $165,000</p>
+            <p class="status bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
+            <p class="discription text-[#323B49]">Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.
 .</p>
             <div class="">
-                <button class="border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
-                <button class="border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
+                <button class="interview-btn border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
+                <button class="reject-btn border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
             </div>
             </div>
              <div>
-                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Delete</button>
+                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 delete ">Delete</button>
             </div>
         </div>
         <div class="p-10 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl flex justify-between">
             <div class="space-y-4">
-                <h1 class="text-2xl font-semibold">CloudFirst Inc</h1>
-            <p class="text-[#323B49]">Backend Developer</p>
-            <p class="text-[#323B49]">Seattle, WA•Full-time•$140,000 - $190,000</p>
-            <p class="bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
-            <p class="text-[#323B49]">Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p>
+                <h1 class="company text-2xl font-semibold">CloudFirst Inc</h1>
+            <p class="post text-[#323B49]">Backend Developer</p>
+            <p class="salary text-[#323B49]">Seattle, WA•Full-time•$140,000 - $190,000</p>
+            <p class="status bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
+            <p class="discription text-[#323B49]">Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p>
             <div class="">
-                <button class="border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
-                <button class="border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
+                <button class="interview-btn border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
+                <button class="reject-btn border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
             </div>
             </div>
              <div>
-                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Delete</button>
+                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 delete ">Delete</button>
             </div>
         </div>
         <div class="p-10 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl flex justify-between">
             <div class="space-y-4">
-                <h1 class="text-2xl font-semibold">Innovation Labs</h1>
-            <p class="text-[#323B49]">UI/UX Engineer</p>
-            <p class="text-[#323B49]">Austin, TX
+                <h1 class="company text-2xl font-semibold">Innovation Labs</h1>
+            <p class="post text-[#323B49]">UI/UX Engineer</p>
+            <p class="salary text-[#323B49]">Austin, TX
  •
  Full-time
  •
  $110,000 - $150,000v</p>
-            <p class="bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
-            <p class="text-[#323B49]">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</p>
+            <p class="status bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
+            <p class="discription text-[#323B49]">Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</p>
             <div class="">
-                <button class="border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
-                <button class="border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
+                <button class=" interview-btn border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
+                <button class="reject-btn border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
             </div>
             </div>
              <div>
-                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Delete</button>
+                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 delete ">Delete</button>
             </div>
         </div>
         <div class="p-10 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl flex justify-between">
             <div class="space-y-4">
-                <h1 class="text-2xl font-semibold">MegaCorp Solutions</h1>
-            <p class="text-[#323B49]">JavaScript Developer</p>
-            <p class="text-[#323B49]">New York, NY
+                <h1 class="company text-2xl font-semibold">MegaCorp Solutions</h1>
+            <p class="post text-[#323B49]">JavaScript Developer</p>
+            <p class="salary text-[#323B49]">New York, NY
  • 
 Full-time 
 •
  $130,000 - $170,00</p>
-            <p class="bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
-            <p class="text-[#323B49]">Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities..</p>
+            <p class="status bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
+            <p class="discription text-[#323B49]">Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities..</p>
             <div class="">
-                <button class="border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
-                <button class="border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
+                <button class="interview-btn border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
+                <button class="reject-btn border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
             </div>
             </div>
              <div>
-                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Delete</button>
+                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 delete ">Delete</button>
             </div>
         </div>
         <div class="p-10 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl flex justify-between">
             <div class="space-y-4">
-                <h1 class="text-2xl font-semibold">StartupXYZv</h1>
-            <p class="text-[#323B49]">Full Stack Engineer</p>
-            <p class="text-[#323B49]">Remote
+                <h1 class="company text-2xl font-semibold">StartupXYZv</h1>
+            <p class="post text-[#323B49]">Full Stack Engineer</p>
+            <p class="salary text-[#323B49]">Remote
  • 
 Full-time 
 •
@@ -165,22 +172,22 @@ Full-time
 Full-time 
 •
  $120,000 - $160,000</p>
-            <p class="bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
-            <p class="text-[#323B49]">Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.</p>
+            <p class="status bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
+            <p class="discription text-[#323B49]">Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.</p>
             <div class="">
-                <button class="border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
-                <button class="border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
+                <button class="interview-btn border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
+                <button class="reject-btn border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
             </div>
             </div>
              <div>
-                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Delete</button>
+                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 delete ">Delete</button>
             </div>
         </div>
         <div class="p-10 space-y-2.5 bg-[#FFFFFF] shadow rounded-2xl flex justify-between">
             <div class="space-y-4">
-                <h1 class="text-2xl font-semibold">TechCorp Industries</h1>
-            <p class="text-[#323B49]">Senior Frontend DeveloperSenior Frontend Developer</p>
-            <p class="text-[#323B49]">San Francisco, CA
+                <h1 class="company text-2xl font-semibold">TechCorp Industries</h1>
+            <p class="post text-[#323B49]">Senior Frontend DeveloperSenior Frontend Developer</p>
+            <p class="salary text-[#323B49]">San Francisco, CA
  • 
 Full-time 
 •
@@ -189,21 +196,21 @@ Full-time
 Full-time 
 •
  $130,000 - $175,000</p>
-            <p class="bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
-            <p class="text-[#323B49]">We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.</p>
+            <p class="status bg-[#EEF4FF] p-3 max-w-[200px] rounded-2xl">Not Applied</p>
+            <p class="discription text-[#323B49]">We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.</p>
             <div class="">
-                <button class="border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
-                <button class="border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
+                <button class="interview-btn border-2 border-[#10B981] text-[#10B981] p-2.5 rounded-xl mr-4">interview</button>
+                <button class="reject-btn border-2 border-[#EF4444] text-[#EF4444] p-2.5 rounded-xl">Rejected</button>
             </div>
             </div>
              <div>
-                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 ">Delete</button>
+                <button class="text-white rounded-2xl min-w-[80px] p-2.5 text-xl cursor-pointer shadow bg-gray-400 delete ">Delete</button>
             </div>
         </div>
         
     </div>
 
 </main>
-    
+   <script src="script.js"></script> 
 </body>
 </html>
