@@ -7,12 +7,20 @@ let rejectCount=document.getElementById("reject-count")
 let interviewCount=document.getElementById("interview-count")
 let cardsContainer=document.getElementById("cards-container")
 let blank=document.getElementById('blank')
+let available=document.getElementById('available')
+ available.innerText=`${cardsContainer.children.length} jobs`
+   available.innerText=`${rejectList.length} jobs`
+     available.innerText=`${interviewList.length} jobs`
+ 
+
 
 function count(){
 totalCount.innerText=cardsContainer.children.length;
 interviewCount.innerText=interviewList.length;
 rejectCount.innerText=rejectList.length;
+
 }
+
 count()
 
 
@@ -39,12 +47,23 @@ function toggle(id){
     document.getElementById(id).classList.add("bg-blue-600");
 
 currentStatus=id;
+
+      
     if(id=='all-tab-btn'){
+        available.innerText=`${cardsContainer.children.length} jobs`
         cardsContainer.classList.remove('hidden')
-        document.getElementById('blank-job').classList.add('hidden')
-         blank.classList.add('hidden')
+         if(cardsContainer.children.length < 1){
+            //  document.getElementById('blank-job').classList.remove('hidden')
+         }
+      
+       else{ document.getElementById('blank-job').classList.add('hidden')
+         blank.classList.add('hidden')}
+         count()
+         
+        //  console.log('available')
     }
     else if(id=='interview-tab-btn'){
+         available.innerText=`${interviewList.length} jobs`
          cardsContainer.classList.add("hidden")
         
          if(interviewList.length < 1){
@@ -54,13 +73,16 @@ currentStatus=id;
              blank.classList.remove('hidden')
              document.getElementById('blank-job').classList.add('hidden')
                renderInterview();
+                  
          }
+         count()
          
     }
     else if(id=='reject-tab-btn'){
+         available.innerText=`${rejectList.length} jobs`
          cardsContainer.classList.add("hidden")
        
-         if(rejectList.length<1){
+       if(rejectList.length<1){
              document.getElementById('blank-job').classList.remove('hidden')
          }
           else{
@@ -68,9 +90,10 @@ currentStatus=id;
              document.getElementById('blank-job').classList.add('hidden')
               renderreject();
          }
-         
+         count()
     }
     
+ 
      
 }
 
@@ -87,6 +110,7 @@ document.getElementById('main-container').addEventListener('click',function(even
         // 
  parentNode.querySelector('.status').innerText='interview'
  parentNode.querySelector('.status').classList.add('bg-green-500')
+ parentNode.querySelector('.status').classList.remove('bg-red-500')
  
       
         let cards={
@@ -125,8 +149,9 @@ document.getElementById('main-container').addEventListener('click',function(even
         let status = parentNode.querySelector('.status').innerText
         let discription = parentNode.querySelector('.discription').innerText  
         // 
- parentNode.querySelector('.status').innerText='reject'
+ parentNode.querySelector('.status').innerText='Reject'
  parentNode.querySelector('.status').classList.add('bg-red-500')
+ parentNode.querySelector('.status').classList.remove('bg-green-500')
       
         let cards={
             company,
@@ -159,8 +184,24 @@ document.getElementById('main-container').addEventListener('click',function(even
          let parentNode=event.target.parentNode.parentNode;
         
          parentNode.remove()
- 
+         
+
+           if(currentStatus='all-tab-btn'&&cardsContainer.children.length<1){
              document.getElementById('blank-job').classList.remove('hidden')
+         }
+        else if(currentStatus='interview-tab-btn'&&cardsContainer.children.length<1){
+             document.getElementById('blank-job').classList.remove('hidden')
+         }
+         else if(currentStatus='reject-tab-btn'&&cardsContainer.children.length<1){
+             document.getElementById('blank-job').classList.remove('hidden')
+         }
+         
+        
+         count()
+ 
+    
+
+                
         
          
      }
